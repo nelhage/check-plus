@@ -1,0 +1,11 @@
+Check-Plus: An EDSL for writing Check tests.
+
+Check [1] is an excellent framework for unit testing C code. This project,
+Check-plus, extends Check by providing a declarative syntax for defining tests,
+that aims to let you repeat yourself as little as possible.
+
+See the doc/ directory for examples of usage. You'll probably want to read the
+Check Manual [2], if you're unfamiliar with Check, first.
+
+[1] http://check.sourceforge.net/
+[2] http://check.sourceforge.net/doc/check_html/index.html
