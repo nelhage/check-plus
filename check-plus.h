@@ -49,7 +49,7 @@ struct test_suite {
     extern test_hook _end_ ## sym ## _teardown[];               \
     struct test_case _test_ ## sym                              \
     __attribute__((section(".data." #suite ".cases"),           \
-                   aligned(1))) = {                             \
+                   aligned(__alignof__(struct test_case)))) = { \
         .test_name = name,                                      \
         .funcs = _begin_ ## sym ## _funcs,                      \
         .end_funcs = _end_ ## sym ## _funcs,                    \
