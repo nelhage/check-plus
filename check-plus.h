@@ -41,8 +41,8 @@ struct test_suite {
 #define BEGIN_SUITE(name) _BEGIN_SUITE(SUITE_NAME, name)
 #define _BEGIN_SUITE(sym, name) __BEGIN_SUITE(sym, name)
 #define __BEGIN_SUITE(sym, name)                                        \
-    extern struct test_case _begin_ ## sym ## _cases[];                 \
-    extern struct test_case _end_ ## sym ## _cases[];                   \
+    struct test_case _begin_ ## sym ## _cases[];                        \
+    struct test_case _end_ ## sym ## _cases[];                          \
     struct test_suite _suite_ ## sym = {                                \
         .cases       = (struct test_case*)_begin_ ## sym ## _cases,     \
         .end_cases   = (struct test_case*)_end_ ## sym ## _cases,       \
@@ -59,12 +59,12 @@ struct test_suite {
                 ".data." #suite "." #test, name)
 
 #define _BEGIN_TEST_CASE_IMPL(suite, sym, sec, name)            \
-    extern test_func _begin_ ## sym ## _funcs[];                \
-    extern test_hook _begin_ ## sym ## _setup[];                \
-    extern test_hook _begin_ ## sym ## _teardown[];             \
-    extern test_func _end_ ## sym ## _funcs[];                  \
-    extern test_hook _end_ ## sym ## _setup[];                  \
-    extern test_hook _end_ ## sym ## _teardown[];               \
+    test_func _begin_ ## sym ## _funcs[];                       \
+    test_hook _begin_ ## sym ## _setup[];                       \
+    test_hook _begin_ ## sym ## _teardown[];                    \
+    test_func _end_ ## sym ## _funcs[];                         \
+    test_hook _end_ ## sym ## _setup[];                         \
+    test_hook _end_ ## sym ## _teardown[];                      \
     struct test_case _test_ ## sym                              \
     __attribute__((section(".data." #suite ".cases"),           \
                    aligned(__alignof__(struct test_case)))) = { \
